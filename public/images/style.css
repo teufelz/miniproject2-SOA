@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+body{
+    background-color: #3E377c;
+    font-family: 'Arimo', sans-serif;
+}
+#hzbar{
+    background-color: #0F0C2B;
+    height: 97.8vh;
+    width: 5vw;
+    padding: 60px 10px 60px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#chatb{
+    height: 97.8vh;
+    width: 95vw;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#user{
+    background-color: #ffffff;
+}
+#profileheader{
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+#client-name{
+    padding-top : 5px;
+}
+
+#message-other{
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    background: #dbdbdb;
+    border-radius: 20px;
+    float: left;
+    clear: both;
+}
+
+#message-my{
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    background: #87f67f;
+    border-radius: 20px;
+    float: right;
+    clear: both;
+}
+
+#chatbox-other{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 13px;
+}
+#chatbox-my{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 13px;
+}
+
+#chat{
+    width: 70%;
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#chatfield{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: auto;
+}
+
+.col{
+    padding: 0;
+}
+
+h1{
+    font-size: 30px;
+    padding: 5px;
+    margin: 0;
+}
+
+h2{
+    font-size: 20px;
+    margin: 0;
+}
+
+h3{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.border{
+    border: 3.5px solid #3E377c !important;  
+    border-left: 0 !important; 
+    border-right: 0 !important; 
+}
+.btn-search{
+    background: #ebba16
+}
+#more.btn:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0rem ;
+}
+
+#profile.list-group-item.active{
+    background-color: rgb(252, 255, 97);
+    border-color: rgb(252, 255, 97,0.4);
+    color: #000000;
+}

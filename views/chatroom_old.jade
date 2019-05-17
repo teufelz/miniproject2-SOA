@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    link(href="stylesheets/style.css", rel='stylesheet')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+  body
+    h1 Welcome to TUMLINE
+    h2 Create Group
+    form(name="addgroup",method="post",action="/addgroup")
+      input(type='text', name='groupname',placeholder='New Group Name')
+      button(type='submit') Create Group
+    h2 Find and Join Group
+    form(name="join",method="post",action="/join")
+      input(type='text', name='findgroupname',placeholder='Group Name')
+      button(type='submit') Join!
+    h2 Your groups
+    each row in roomlist
+        .row
+          a(href=`/chatroom/${row._id}` class="btn btn-info" role="button") #{row.group_name} 
+          form(name="leaves",method="post",action="/leaves")
+            input(type='hidden', name='chatroomid', value=row._id)
+            button(type="submit" class="btn btn-warning" role="button") Leaves
+          form(name="destroy",method="post",action="/destroy")
+            input(type='hidden', name='chatroomid', value=row._id)
+            button(type="submit" class="btn btn-danger" role="button") Destroy!!
+    h2
+    a(href="/logout" class="btn btn-warning" role="button") Logout
+    h2 =====================================================================
+    h2 GROUP #{thischat.group_name}
+    each row in thischat.group_chat
+        p #{row.User} : #{row.Text}
+    form(name="sendMessage",method="post",action="/sendMessage")
+      input(type='text', name='message',placeholder='Message')
+      input(type='hidden', name='chatroomid', value=thischat._id)
+      button(type='submit') Send

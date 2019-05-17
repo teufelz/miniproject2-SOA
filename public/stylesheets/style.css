@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+body{
+    background-color: #3E377c;
+    font-family: 'Arimo', sans-serif;
+}
+#hzbar{
+    background-color: #0F0C2B;
+    height: 97.8vh;
+    width: 5vw;
+    padding: 60px 10px 60px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#chatb{
+    height: 97.8vh;
+    width: 95vw;
+    padding: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#user{
+    background-color: #ffffff;
+}
+#profileheader{
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.8vh;
+}
+
+#client-name{
+    padding-top : 0.5vh;
+}
+
+.message-other{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1vh 1.5vh 1vh 1.5vh;
+    margin-bottom: 0.5vh;
+    margin-top: 1vh;
+    background: #dbdbdb;
+    border-radius: 2vh;
+    float: left;
+    clear: both;
+    text-align: start;
+    align-self: flex-start;
+}
+
+.message-my{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1vh 1.5vh;
+    margin-bottom: 0.5vh;
+    margin-top: 1vh;
+    background: #87f67f;
+    border-radius: 2vh;
+    float: right;
+    clear: both;
+    text-align: end;
+    align-self: flex-end;
+}
+
+#chat{
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#chatfield{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.col{
+    padding: 0;
+}
+
+h1{
+    font-size: 3vh;
+    padding: 0.5vh;
+    margin: 0;
+}
+
+h2{
+    font-size: 2vh;
+    margin: 0;
+}
+
+h3{
+    font-size: 2vh;
+    margin: 1vh;
+}
+
+.border{
+    border: 3.5px solid #3E377c !important;  
+    border-left: 0 !important; 
+    border-right: 0 !important; 
+}
+.btn-search{
+    background: #ebba16
+}
+#more.btn:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0rem ;
+}
+
+#profile.list-group-item.active{
+    background-color: rgb(252, 255, 97);
+    border-color: rgb(252, 255, 97,0.4);
+    color: #000000;
+}
+
+.box {
+    width: 100%;
+    border-radius: 3px;
+}
+
+#chat-message {
+    background: #f5f5f5;
+    padding: 1vh;
+    border: 1px solid #d5d5d5;
+}
+
+#mylist{
+    height: 69vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.btn-outline-danger {
+    height: 5vh;
+    color: #000000;
+    border: 3px solid #3E377c;
+    border-radius: 0px;
+    margin: 3px;
+}
+
+
+.btn-outline-warning {
+    height: 5vh;
+    color: #000000;
+    border: 3px solid #3E377c;
+    border-radius: 0px;
+    margin: 3px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    border-bottom: 1px solid #eee; 
+    border-top: 1px solid #eee;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #C3C3C3;
+    border: 2px solid #eee;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
+} 

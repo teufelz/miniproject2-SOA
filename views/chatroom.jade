@@ -1,0 +1,121 @@
+doctype html
+//chatpage
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title chatpage
+  body
+    .container-fluid
+      #main.row
+        #hzbar.col
+          .col
+            .row
+              a#homepage.d-block.mx-auto(href='/chatroom/homepage')
+                img(src='/images/home-page.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='/serchandjoin')
+                img(src='/images/magnifying-glass.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='/addgroup')
+                img(src='/images/add.png', width='40px')
+          .row
+            a#logout.d-block.mx-auto(href='/logout')
+              img(src='/images/logout.png', width='40px')
+        .col
+          #chatb.row
+            #user.col.col-lg-3
+              #profileheader.border
+                h1 Profile
+              #profile
+                .col.col-lg-4
+                  img(src='/images/boy.png', style='width: 5vw; margin-left: 18px')
+                h2(style='align-self: center') #{clientname}
+              #profileheader.border
+                h1 Group
+              #mylist.col.list-group
+                each row in roomlist
+                    - var link = "/chatroom/" + row._id
+                    a#profile.btn(role='button', href=link)
+                        .col.col-lg-4
+                          img(src='/images/business-and-finance.png', style='width: 5vw')
+                        h2(style='align-self: center') #{row.group_name}
+            #chat.col.col-lg-7(style='background: transparent')
+              #profileheader.border
+                h1 #{thischat.group_name}
+                .btn-group(style="align-self: center;")
+                  //- button#more.btn(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  //-   img(src='/images/more.png', width='30', height='30')
+                  //- .dropdown-menu.dropdown-menu-right(style='margin-top: 5px;')
+                  form(name='leaves', method='post', action='/leaves')
+                    input(type='hidden', name='chatroomid', value=thischat._id)
+                    button.btn.btn-outline-warning(type='submit', role='button') Leave group
+                  form(name='destroy', method='post', action='/destroy')
+                    input(type='hidden', name='chatroomid', value=thischat._id)
+                    button.btn.btn-outline-danger(type='submit', role='button') Delete group
+              ul#chatfield.col
+                each row in thischat.group_chat
+                    - if(row.User == clientname){
+                        //.chatbox-me
+                        li(class="message-my text-break") #{row.Text}
+                    -}else if(row.Text != no){
+                        //.chatbox-other
+                        li(class="message-other text-break") #{row.User} : #{row.Text}
+                    -}
+              form#chat-form(action="")
+                .input-group.border
+                  input.box(type='text',id="chat-message",autocomplete='off', placeholder='message')
+              input#reqclient(type='hidden', value=clientname)
+              input#roomid(type='hidden', value=thischat._id)
+    // script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src="https://cdn.socket.io/socket.io-1.3.3.js")
+    script(src="https://code.jquery.com/jquery-2.1.3.min.js")
+    script.
+        // เอา Socket.IO มาใช้งาน
+        var socket = io();
+        var clientname_id = $('#reqclient');
+        var clientname = clientname_id.val();
+        var room_id = $('#roomid');
+        var room = room_id.val();
+
+
+        // get element ต่างๆ มารอไว้ก่อน
+        var chatForm = $('#chat-form');
+        var chatHistory = $("#chatfield");
+        var inputMessage = $("#chat-message");
+        
+
+        // set ให้ focus ที่ input ตั้งแต่เริ่ม
+        inputMessage.focus();
+
+        //เมื่อ submit form ให้ทำอะไร?
+        chatForm.submit(function() {
+             // ส่งทั้ง username และ ข้อความไปให้ server
+             console.log(inputMessage.val());
+             socket.emit('chat', {
+                 username: clientname, 
+                 message: inputMessage.val(),
+                 chatroom: room
+             });
+
+             // clear ค่า input
+             $(this)[0].reset();
+             return false;
+        });
+        
+        // เมื่อได้รับข้อมูลจาก server ให้ทำอะไร?
+        socket.on('chat', function(data) {
+            if (data.username == clientname) {
+                // ถ้าเราเป็นคนส่งเอง ให้พ่น li.message.message--me
+                chatHistory.append($('<li class="message-my text-break">').text(data.message));
+            } else {
+                // แต่ถ้าเป็นคนอื่นส่ง ให้พ่น li.message เฉยๆ
+                chatHistory.append($('<li class="message-other text-break">').text(data.username + ': ' + data.message));
+            }
+            // เมื่อพ่นข้อความแล้ว ก็ให้เลื่อนหน้าจอไปที่ข้อความล่าสุดด้วย
+            chatHistory[0].scrollTop = chatHistory[0].scrollHeight;
+        });

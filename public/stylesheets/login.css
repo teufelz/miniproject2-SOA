@@ -1,0 +1,16 @@
+form{
+	align-items: center;
+}
+button{
+	width: 328px
+}
+body{
+	background-color: #3E377C;
+}
+div{
+	padding-bottom: 10px;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+}
+

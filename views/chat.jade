@@ -1,0 +1,53 @@
+doctype html
+//homepage
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Homepage
+  body
+    .container-fluid
+      #main.row
+        #hzbar.col
+          .col
+            .row
+              a#homepage.d-block.mx-auto(href='#')
+                img(src='/images/home-page.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='/serchandjoin')
+                img(src='/images/magnifying-glass.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='/addgroup')
+                img(src='/images/add.png', width='40px')
+          .row
+            a#logout.d-block.mx-auto(href='/logout')
+              img(src='/images/logout.png', width='40px')
+        .col
+          #chatb.row
+            #user.col.col-lg-3
+              #profileheader.border
+                h1 Profile
+              #profile(style='margin-left: 18px')
+                .col.col-lg-3
+                  img(src='/images/boy.png', style='width: 5vw')
+                h2(style='align-self: center; margin-left: 15px') #{clientname}
+              #profileheader.border
+                h1 Group
+              #mylist.col.list-group
+                each row in roomlist
+                  - var link = "/chatroom/" + row._id
+                  a#profile.btn(role='button', href=link)
+                    .col.col-lg-4
+                      img(src='/images/business-and-finance.png', style='width: 5vw')
+                    h2(style='align-self: center') #{row.group_name}
+            #chat.col.col-lg-7
+              img.d-block.mx-auto(src='/images/TUMLINE - black.png', style='width: 40%;margin: 30px; margin-top: 20vh')
+    // Optional JavaScript
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')

@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Create New Group
+  body
+    .container-fluid
+      #main.row
+        #hzbar.col
+          .col
+            .row
+              a#homepage.d-block.mx-auto(href='/chatroom/homepage')
+                img(src='/images/home-page.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='/serchandjoin')
+                img(src='/images/magnifying-glass.png', width='40px')
+            .row
+              a#search.d-block.mx-auto.mt-5(href='#')
+                img(src='/images/add.png', width='40px')
+          .row
+            a#logout.d-block.mx-auto(href='/logout')
+              img(src='/images/logout.png', width='40px')
+        .col
+          #chatb.row
+            #chat.col.col-lg-11
+              img.d-block.mx-auto(src='/images/TUMLINE - black.png', style='width: 30%; margin: 20px')
+              h3(style='margin-left: 30.5%')
+                strong Create new group here
+              .col(style='width: 40%; align-self: center', align='center')
+                form(name="addgroup",method="post",action="/addgroup")
+                    .input-group
+                        input.form-control(type='text',name="groupname" placeholder='Please enter group name')
+                        span.input-group-btn
+                          button.btn.btn-search(type='submit')
+                              i.fa.fa-search.fa-fw
+                              img(src='/images/add-icon.png', width='24px')
+                script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+                script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+                script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
